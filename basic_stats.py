@@ -46,7 +46,7 @@ def main():
             triples = stats_obj.get("triples", 0)
             home_runs = stats_obj.get("home_runs", 0)
             hits = singles + doubles + triples + home_runs
-            bb = stats_obj.get("walks", 0)
+            bb = stats_obj.get("walked", 0)
             hbp = 0  # I need an example of this to see what the key is
             earned_runs = stats_obj.get("earned_runs", 0)
 
