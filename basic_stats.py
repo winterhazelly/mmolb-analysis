@@ -37,8 +37,8 @@ def main():
     for player in team_obj["Players"]:
         player_obj = get_json(f"https://mmolb.com/api/player/{player['PlayerID']}")
 
-        # if not player_obj["Stats"]:
-        #     print("No stats for ", player["FirstName"], player["LastName"])
+        if not player_obj["Stats"]:
+            print("No stats for", player["FirstName"], player["LastName"])
 
         for stats_obj in player_obj["Stats"].values():
             singles = stats_obj.get("singles", 0)
@@ -48,6 +48,7 @@ def main():
             hits = singles + doubles + triples + home_runs
             bb = stats_obj.get("walks", 0)
             hbp = 0  # I need an example of this to see what the key is
+            earned_runs = stats_obj.get("earned_runs", 0)
 
             try:
                 ab = stats_obj["at_bats"]
@@ -71,7 +72,7 @@ def main():
 
             try:
                 ip = stats_obj["batters_faced"] / 3
-                era = 9 * stats_obj["earned_runs"] / ip
+                era = 9 * earned_runs / ip
             except KeyError:
                 era_str = None
             else:
