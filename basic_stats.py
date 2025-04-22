@@ -72,11 +72,10 @@ def main():
 
             try:
                 ip = stats_obj["batters_faced"] / 3
-                era = 9 * earned_runs / ip
             except KeyError:
                 era_str = None
             else:
-                # Innings pitched has a special display format in baseball
+                era = 9 * earned_runs / ip
                 ip_str = dot_format(ip)
                 era_str = f"ERA {era:.2f} ({ip_str} IP)"
 
