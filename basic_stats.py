@@ -41,23 +41,57 @@ def main():
         #     print("No stats for ", player["FirstName"], player["LastName"])
 
         for stats_obj in player_obj["Stats"].values():
+            singles = stats_obj.get("singles", 0)
+            doubles = stats_obj.get("doubles", 0)
+            triples = stats_obj.get("triples", 0)
+            home_runs = stats_obj.get("home_runs", 0)
+            hits = singles + doubles + triples + home_runs
+            bb = stats_obj.get("walks", 0)
+            hbp = 0  # I need an example of this to see what the key is
+
+            try:
+                ab = stats_obj["at_bats"]
+            except KeyError:
+                ba_str = None
+            else:
+                ba = hits / ab
+                ba_str = f"BA: {ba:.3f} ({ab} AB)"
+
+            try:
+                pa = stats_obj["plate_appearances"]
+                ab = stats_obj["at_bats"]
+            except KeyError:
+                ops_str = None
+            else:
+                obp = (hits + bb + hbp) / pa
+                slg = (singles + 2 * doubles + 3 * triples + 4 * home_runs) / ab
+                ops = obp + slg
+                pa_str = dot_format(pa)
+                ops_str = f"OBP: {obp:.3f}, SLG: {slg:.3f}, OPS: {ops:.3f} ({pa_str} PA)"
+
             try:
                 ip = stats_obj["batters_faced"] / 3
                 era = 9 * stats_obj["earned_runs"] / ip
-
-                # Innings pitched has a special display format in baseball
-                ip_whole = int(ip)
-                ip_remainder = int((ip - ip_whole) / 3 * 10)
-                if ip_remainder == 0:
-                    ip_str = f"{ip_whole}"
-                else:
-                    ip_str = f"{ip_whole}.{ip_remainder}"
-                era_str = f"ERA {era:.2f} ({ip_str} IP)"
             except KeyError:
                 era_str = None
+            else:
+                # Innings pitched has a special display format in baseball
+                ip_str = dot_format(ip)
+                era_str = f"ERA {era:.2f} ({ip_str} IP)"
 
-            if era_str is not None:
-                print(player["Position"], player["FirstName"], player["LastName"], era_str)
+            stats_str = ", ".join(s for s in [ba_str, ops_str, era_str] if s is not None)
+            if stats_str:
+                print(player["Position"], player["FirstName"], player["LastName"], stats_str)
+
+
+def dot_format(in_val: float) -> str:
+    ip_whole = int(in_val)
+    ip_remainder = int((in_val - ip_whole) / 3 * 10)
+    if ip_remainder == 0:
+        ip_str = f"{ip_whole}"
+    else:
+        ip_str = f"{ip_whole}.{ip_remainder}"
+    return ip_str
 
 
 if __name__ == '__main__':
