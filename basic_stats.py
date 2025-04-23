@@ -2,10 +2,11 @@ import hashlib
 import json
 from pathlib import Path
 from datetime import datetime, timedelta, timezone
+import sys
 
 import requests
 
-MY_TEAM_ID = "68060831b57069886d0df010"
+MY_TEAM_ID = sys.argv[1]
 HTTP_CACHE_DIR = Path("http_cache")
 
 def stable_str_hash(in_val: str) -> str:
@@ -41,14 +42,9 @@ def get_json(url: str) -> dict:
 
 def main():
     team_obj = get_json(f"https://mmolb.com/api/team/{MY_TEAM_ID}")
+    print(team_obj["Emoji"],team_obj["Location"],team_obj["Name"])
 
-    # Players has been a dictionary and a list
-    try:
-        player_list = team_obj["Players"].values()
-    except AttributeError:
-        player_list = team_obj["Players"]
-
-    for player in player_list:
+    for player in team_obj["Players"]:
         player_obj = get_json(f"https://mmolb.com/api/player/{player['PlayerID']}")
 
         try:
@@ -89,7 +85,7 @@ def main():
             ops_str = f"OBP: {obp:.3f}, SLG: {slg:.3f}, OPS: {ops:.3f} ({pa_str} PA)"
 
         try:
-            ip = stats_obj["outs"] / 3
+            ip = stats_obj["batters_faced"] / 3
         except KeyError:
             era_str = None
         else:
@@ -114,3 +110,4 @@ def dot_format(in_val: float) -> str:
 
 if __name__ == '__main__':
     main()
+
