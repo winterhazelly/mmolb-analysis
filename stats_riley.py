@@ -45,6 +45,7 @@ def main():
     csv_file = open("full_league.csv","a")
 
     team_obj = get_json(f"https://mmolb.com/api/team/{MY_TEAM_ID}")
+    print(f"Processing {team_obj['Emoji']} {team_obj['Location']} {team_obj['Name']}")
 
     for player in team_obj["Players"]:
         try:
@@ -58,7 +59,6 @@ def main():
             # maximum value to get stats for the latest season
             stats_obj = player_obj["Stats"][max(player_obj["Stats"].keys())]
         except ValueError:
-            # print("No stats for", player["FirstName"], player["LastName"])
             csv_file.write(f"{player['FirstName']} {player['LastName']}| {player['Position']}||||||||||{team_obj['Location']} {team_obj['Name']}\n")
             continue
 
@@ -102,7 +102,6 @@ def main():
 
         stats_str = "|".join(s for s in [era_str, ba_str, ops_str])
         if stats_str:
-            # print(f"{player['FirstName']} {player['LastName']}| {player['Position']}| {stats_str}")
             csv_file.write(f"{player['FirstName']} {player['LastName']}| {player['Position']}| {stats_str}||{team_obj['Location']} {team_obj['Name']}\n")
 
 
