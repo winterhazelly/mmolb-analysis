@@ -1,2 +1,2 @@
 /.venv/
-/http_cache/
+/http_cache*
