@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c392f7ce-321c-4928-b4cf-95e4ec697cba" name="Changes" comment="Batter stats">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="c392f7ce-321c-4928-b4cf-95e4ec697cba" name="Changes" comment="Support HBP">
       <change beforePath="$PROJECT_DIR$/basic_stats.py" beforeDir="false" afterPath="$PROJECT_DIR$/basic_stats.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -16,6 +14,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -88,7 +87,7 @@
       <updated>1745298806177</updated>
       <workItem from="1745298807198" duration="5702000" />
       <workItem from="1745305038239" duration="2082000" />
-      <workItem from="1745311573782" duration="3201000" />
+      <workItem from="1745311573782" duration="3358000" />
     </task>
     <task id="LOCAL-00001" summary="Batter stats">
       <option name="closed" value="true" />
@@ -98,7 +97,23 @@
       <option name="project" value="LOCAL" />
       <updated>1745302489880</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Expire cache after 5 minutes&#10;&#10;Doesn't delete the files though">
+      <option name="closed" value="true" />
+      <created>1745369395377</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1745369395377</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Support HBP">
+      <option name="closed" value="true" />
+      <created>1745369480201</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1745369480201</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,10 +121,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Batter stats" />
-    <option name="LAST_COMMIT_MESSAGE" value="Batter stats" />
+    <MESSAGE value="Expire cache after 5 minutes&#10;&#10;Doesn't delete the files though" />
+    <MESSAGE value="Support HBP" />
+    <option name="LAST_COMMIT_MESSAGE" value="Support HBP" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/mmolb_analysis$main.coverage" NAME="basic_stats Coverage Results" MODIFIED="1745303780648" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/mmolb_analysis$basic_stats.coverage" NAME="basic_stats Coverage Results" MODIFIED="1745369363649" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/mmolb_analysis$basic_stats.coverage" NAME="basic_stats Coverage Results" MODIFIED="1745369493298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
