@@ -59,6 +59,7 @@ def main():
             # maximum value to get stats for the latest season
             stats_obj = player_obj["Stats"][max(player_obj["Stats"].keys())]
         except ValueError:
+            # print("No stats for", player["FirstName"], player["LastName"])
             csv_file.write(f"{player['FirstName']} {player['LastName']}| {player['Position']}||||||||||{team_obj['Location']} {team_obj['Name']}\n")
             continue
 
@@ -92,7 +93,7 @@ def main():
             ops_str = f"{obp:.3f}|{slg:.3f}|{pa_str}|{ops:.3f}"
 
         try:
-            ip = stats_obj["batters_faced"] / 3
+            ip = stats_obj["outs"] / 3
         except KeyError:
             era_str = "|"
         else:
@@ -102,6 +103,7 @@ def main():
 
         stats_str = "|".join(s for s in [era_str, ba_str, ops_str])
         if stats_str:
+            # print(f"{player['FirstName']} {player['LastName']}| {player['Position']}| {stats_str}")
             csv_file.write(f"{player['FirstName']} {player['LastName']}| {player['Position']}| {stats_str}||{team_obj['Location']} {team_obj['Name']}\n")
 
 
