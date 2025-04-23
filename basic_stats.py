@@ -59,7 +59,7 @@ def main():
         home_runs = stats_obj.get("home_runs", 0)
         hits = singles + doubles + triples + home_runs
         bb = stats_obj.get("walked", 0)
-        hbp = 0  # I need an example of this to see what the key is
+        hbp = stats_obj.get("hit_by_pitch", 0)
         earned_runs = stats_obj.get("earned_runs", 0)
 
         try:
